@@ -18,7 +18,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>sample.ico</normaloff>sample.ico</iconset>
+    <normaloff>../sample.ico</normaloff>../sample.ico</iconset>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -31,7 +31,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QWidget#widget{
-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(211, 34, 208, 255), stop:0.772727 rgba(255, 255, 255, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.323864 rgba(85, 85, 255, 255), stop:1 rgba(170, 170, 255, 255));
 }</string>
    </property>
    <widget class="QLabel" name="label">
@@ -77,7 +77,7 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn">
+   <widget class="QPushButton" name="btn_login">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -87,14 +87,14 @@ font: 14pt &quot;MS Shell Dlg 2&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton#btn {
+     <string notr="true">QPushButton#btn_login {
 border-radius: 15px;
 background-color: rgb(208, 208, 208);
 font: 10pt &quot;MS Shell Dlg 2&quot;; 
 }
 
-QPushButton:hover#btn {
-background-color:  rgb(0, 170, 127);
+QPushButton:hover#btn_login {
+background-color:  rgb(0, 170, 255);
 color: white; 
 }</string>
     </property>
@@ -102,7 +102,7 @@ color: white;
      <string>Log in</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonCreateAcc">
+   <widget class="QPushButton" name="btn_create_account">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -112,13 +112,13 @@ color: white;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton#buttonCreateAcc {
+     <string notr="true">QPushButton#btn_create_account {
 border-radius: 15px;
 background-color: rgb(208, 208, 208);
 font: 10pt &quot;MS Shell Dlg 2&quot;; 
 }
 
-QPushButton:hover#buttonCreateAcc {
+QPushButton:hover#btn_create_account {
 background-color:  rgb(0, 170, 127);
 color: white; 
 }</string>
