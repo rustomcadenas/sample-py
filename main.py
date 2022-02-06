@@ -1,38 +1,7 @@
-# import sys 
-# from PyQt5.uic import loadUi
-# from PyQt5.QtWidgets import QApplication
-
-# from classes import LoginScreen
-# from classes import WelcomeScreen 
- 
-# if __name__ == "__main__": 
-
-#     def showLoginScreen():
-#         login.show() 
-#         # welcome.hide()
-
-#     def showWelcomeScreen():
-#         welcome.show()   
-#         login.hide()
-
-#     app = QApplication(sys.argv)
-
-#     welcome = WelcomeScreen()
-#     welcome.btn.clicked.connect(showLoginScreen)
-#     welcome.show() 
-
-#     login = LoginScreen() 
-#     login.back.mousePressEvent = showWelcomeScreen
-
-#     try:
-#         sys.exit(app.exec())
-#     except:
-#         print("Program Terminated!")
-
 import sys
-from PyQt5.QtWidgets import QApplication
+from PyQt5.QtWidgets import QApplication, QMessageBox
 
-from classes import LoginScreen, WelcomeScreen, CreateAccountScreen
+from classes import LoginScreen, WelcomeScreen, CreateAccountScreen, MainScreen
 
 class Main():
     def __init__(self):
@@ -51,15 +20,26 @@ class Main():
 
         self.CreateAccountScreen = CreateAccountScreen()    #Create Account Screen
         self.CreateAccountScreen.btn_back.clicked.connect(self.openWelcomeScreen)
+        self.CreateAccountScreen.btn_create_account.clicked.connect(self.createAccount)
 
-        # self.LoginScreen.btn_hideWidget.clicked.connect(self.hideWidget)
- 
-    # def hideWidget(self):
-    #     if (self.LoginScreen.widget_login.isHidden()) == True :
-    #         self.LoginScreen.widget_login.show()
-    #     else:
-    #         self.LoginScreen.widget_login.setVisible(False)
+        self.MainScreen = MainScreen()  #Main Screen
+        # self.MainScreen.setVisible(True)
+        self.MainScreen.btn_sample.clicked.connect(self.displayMessage)
+        
+    def displayMessage(self): 
+        msg = QMessageBox()
+        msg.setText("This is a message box")
+        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        msg.exec()
 
+    def createAccount(self):
+        fname = self.CreateAccountScreen.nput_fullname.text()
+        course = self.CreateAccountScreen.nput_course.currentText()
+        bday = self.CreateAccountScreen.nput_bday.text()
+        username = self.CreateAccountScreen.nput_username.text()
+        password = self.CreateAccountScreen.nput_password.text()
+
+        print("{} | {}, {} | {} | {}".format(fname, course, bday, username, password)) 
 
     def loggedIn(self):    
         name = self.LoginScreen.txt_username.text()
@@ -84,7 +64,7 @@ class Main():
     def openCreateAccountScreen(self):
         self.CreateAccountScreen.show()
         self.WelcomeScreen.hide()
-
+ 
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtGui import QCursor
- 
+
  
 class WelcomeScreen(QDialog):
     def __init__(self): 
@@ -28,3 +28,10 @@ class CreateAccountScreen(QDialog):
         self.nput_fullname.setPlaceholderText("Juan Dela Cruz")
         self.btn_create_account.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.btn_back.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+
+class MainScreen(QDialog):
+    def __init__(self):
+        super(MainScreen, self).__init__()
+        loadUi("ui/main.ui", self)
+
+        
