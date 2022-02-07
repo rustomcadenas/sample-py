@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMessageBox
 
 from classes import LoginScreen, WelcomeScreen, CreateAccountScreen, MainScreen
+from db import DB
 
 class Main():
     def __init__(self):
@@ -35,15 +36,23 @@ class Main():
     def createAccount(self):
         fname = self.CreateAccountScreen.nput_fullname.text()
         course = self.CreateAccountScreen.nput_course.currentText()
-        bday = self.CreateAccountScreen.nput_bday.text()
+        bday = self.CreateAccountScreen.nput_bday.date().toPyDate()
         username = self.CreateAccountScreen.nput_username.text()
         password = self.CreateAccountScreen.nput_password.text()
+        data = fname, course, bday, username, password
+        db = DB()
+        db.query("INSERT INTO tbl_users(fullname, course, bday, username, password) VALUES (%s, %s, %s, %s, %s)", data)
+        # print("{} | {}, {} | {} | {}".format(fname, course, bday, username, password)) 
+        self.clearCreateAccountFields()
 
-        print("{} | {}, {} | {} | {}".format(fname, course, bday, username, password)) 
+
+    def clearCreateAccountFields(self):
+        self.CreateAccountScreen.nput_fullname.setText("")
 
     def loggedIn(self):    
         name = self.LoginScreen.txt_username.text()
         password = self.LoginScreen.txt_password.text()
+        
 
         if name == "tomas" and password == "gwapo":
             self.LoginScreen.lbl_error.setText("Ttomas gwapo")

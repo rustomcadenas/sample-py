@@ -28,3 +28,15 @@
 #         sys.exit(app.exec())
 #     except:
 #         print("Program Terminated!")
+
+
+
+# ========================
+# db = DB()
+# data = 'Joharah Gwapa', 'ABCD', '1997/1/1', 'username', 'password'
+# db.query("INSERT INTO tbl_users(fullname, course, bday, username, password) VALUES (%s, %s, %s, %s, %s)", data)
+
+# # data = 'Tom Gwapo', 'BS INFO TECH', 1
+# # db.query("UPDATE tbl_users set fullname=%s, course=%s where user_id=%s", data)
+
+# print(db.query("select * from tbl_users", ""))

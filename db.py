@@ -2,20 +2,14 @@ import mysql.connector
 
 class DB:
     def __init__(self):
-        db_host = 'localhost'
-        db_name = 'py_crud'
-        db_user = 'root'
-        db_password = ''
-        self.connection = mysql.connector.connect(host=db_host, database=db_name, user=db_user, password=db_password)
-
-
-        if self.connection.is_connected():
-            print("Connection is successful")
-        else:
-            print("Connection Failed")
-
-
+        self.db_host = 'localhost'
+        self.db_name = 'py_crud'
+        self.db_user = 'root'
+        self.db_password = '' 
+ 
     def query(self, query, params):
+        self.connection = mysql.connector.connect(host=self.db_host, database=self.db_name, user=self.db_user, password=self.db_password)
+
         splitted_query = query.split()[0]
 
         try: 
@@ -34,13 +28,6 @@ class DB:
             if self.connection.is_connected():
                 cursor.close()
                 self.connection.close()
-                print("Mysql Connection is close")
 
-db = DB()
-data = 'Joharah Gwapa', 'ABCD', '1997/1/1', 'username', 'password'
-db.query("INSERT INTO tbl_users(fullname, course, bday, username, password) VALUES (%s, %s, %s, %s, %s)", data)
 
-# data = 'Tom Gwapo', 'BS INFO TECH', 1
-# db.query("UPDATE tbl_users set fullname=%s, course=%s where user_id=%s", data)
-
-# print(db.query("select * from tbl_users", ""))
+ 
